@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 20        # allow more concurrent processing
+      min-spare: 5
+    accept-count: 10  # IMPORTANT: increase backlog queue
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sd_demo
+    username: root
+    password: Nirvika@7491
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+      connection-timeout: 3000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false   # disable in performance testing
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    com.zaxxer.hikari: INFO
